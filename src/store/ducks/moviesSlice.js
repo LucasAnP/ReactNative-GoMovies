@@ -9,7 +9,7 @@ const initialState = {
 
 export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
   try {
-    const response = await api.get("/movies/popular");
+    const response = await api.get("/movies/trending");
     return [...response.data];
   } catch (err) {
     return err.message;
@@ -22,24 +22,6 @@ const moviesSlice = createSlice({
   reducers: {
     movieAdded(state, action) {
       state.movies.push(action.payload);
-    },
-    prepare(title, content, userId) {
-      return {
-        payload: {
-          id: nanoid(),
-          title,
-          content,
-          date: new Date().toISOString(),
-          userId,
-          reactions: {
-            thumbsUp: 0,
-            wow: 0,
-            heart: 0,
-            rocket: 0,
-            coffee: 0,
-          },
-        },
-      };
     },
   },
   extraReducers(builder) {

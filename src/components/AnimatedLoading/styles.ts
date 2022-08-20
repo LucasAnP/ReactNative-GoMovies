@@ -3,15 +3,16 @@ import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
-  width: ${RFPercentage(100)}px;
+  width: ${RFPercentage(52)}px;
   height: ${RFPercentage(110)}px;
-
-  position: absolute;
 
   align-items: center;
   justify-content: center;
 
-  background-color: rgba(1, 1, 1, 0.7);
+  position: absolute;
+  z-index: 2;
+
+  background-color: rgba(0, 0, 0, 0.9);
 `;
 
 export const LottieIcon = styled(AnimatedLottieView)`

@@ -14,7 +14,7 @@ import { Splash } from './src/components/Splash';
 import { ThemeProvider } from 'styled-components';
 import theme from './src/styles/theme';
 import { Provider } from 'react-redux';
-import { store } from './src/app/store';
+import { store } from './src/store/store';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
