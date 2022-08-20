@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AnimatedLoading } from '../../components/AnimatedLoading';
+import { MoviesList } from '../../features/movies/MoviesList';
 import { api } from '../../services/api';
 
 import {
@@ -29,6 +30,7 @@ export function Home() {
         <>
             <Container>
                 {loading && <AnimatedLoading />}
+                <MoviesList />
             </Container>
         </>
     );

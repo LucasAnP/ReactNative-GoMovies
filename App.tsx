@@ -13,6 +13,8 @@ import { Home } from './src/screens/Home';
 import { Splash } from './src/components/Splash';
 import { ThemeProvider } from 'styled-components';
 import theme from './src/styles/theme';
+import { Provider } from 'react-redux';
+import { store } from './src/app/store';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -53,8 +55,10 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Home />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Home />
+      </ThemeProvider>
+    </Provider>
   );
 }
