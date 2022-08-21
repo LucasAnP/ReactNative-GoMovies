@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AnimatedLoading } from '../../components/AnimatedLoading';
 import { MovieCardHorizontal } from '../../components/MovieCardHorizontal';
 import { MovieCardVertical } from '../../components/MovieCardVertical';
-import { fetchMovies, getMoviesError, getMoviesStatus, selectAllMovies } from '../../store/ducks/moviesSlice';
+import { fetchMovies, fetchRecommendedMovies, getMoviesError, getMoviesStatus, selectAllMovies, selectAllRecommendedMovies } from '../../store/ducks/moviesSlice';
 
 import {
     Container, ListContainer, RecommendedMoviesContainer, Title, TrendingMoviesContainer
@@ -15,10 +15,14 @@ export function Home() {
     const dispatch = useDispatch();
 
     const movies = useSelector(selectAllMovies);
+    const recommendedMovies = useSelector(selectAllRecommendedMovies);
+
     const moviesStatus = useSelector(getMoviesStatus);
     const error = useSelector(getMoviesError);
+
     useEffect(() => {
         dispatch(fetchMovies());
+        dispatch(fetchRecommendedMovies())
     }, [dispatch]);
 
     useEffect(() => {
@@ -47,10 +51,10 @@ export function Home() {
 
                     </TrendingMoviesContainer>
                     <RecommendedMoviesContainer>
-                        <Title>Recommended</Title>
+                        <Title>Most Watched</Title>
                         <ListContainer>
                             <FlatList
-                                data={movies}
+                                data={recommendedMovies}
                                 renderItem={({ item }) => <MovieCardVertical imageUrl={item.image} title={item.title} info={item.info} date={item.date} />}
                                 showsVerticalScrollIndicator={false}
                             // onEndReached={fetchWords}
