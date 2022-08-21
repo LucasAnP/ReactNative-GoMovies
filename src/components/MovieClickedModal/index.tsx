@@ -5,6 +5,7 @@ import { AbsoluteContainer, ImageBackground, ImageContainer, ModalContainer, Sub
 
 import { MaterialIcons } from '@expo/vector-icons';
 import { useTheme } from "styled-components";
+import { Image } from "react-native";
 
 interface Data {
     image: string;
@@ -29,7 +30,7 @@ export function MovieClickedModal({ visible, data, setVisible }: Props) {
                     <AbsoluteContainer onPress={() => { setVisible(false) }}>
                         <MaterialIcons name="chevron-left" size={32} color={theme.colors.text_white} />
                     </AbsoluteContainer>
-                    <ImageBackground source={{ uri: data.image }} />
+                    <ImageBackground source={{ uri: data.image }} resizeMode={'stretch'} />
                 </ImageContainer>
                 <TitleAndSubContainer>
                     <Title>{data.title}</Title>
