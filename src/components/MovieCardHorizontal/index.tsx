@@ -2,23 +2,27 @@ import React from 'react';
 import { Text, View } from 'react-native';
 
 import {
-    Container, Image, ImageContainerRounded, Subtitle, Title
+    Container, Image, ImageContainerRounded, InfoContainer, Subtitle, SubtitleDate, Title
 } from './styles';
 
 interface Props {
     imageUrl: string,
     title: string,
-    info: string
+    info: string,
+    date: string
 }
 
-export function MovieCardHorizontal({ imageUrl, title, info }: Props) {
+export function MovieCardHorizontal({ imageUrl, title, info, date }: Props) {
     return (
         <Container>
             <ImageContainerRounded>
                 <Image source={{ uri: imageUrl }} />
             </ImageContainerRounded>
-            <Title>{title}</Title>
-            <Subtitle>{info}</Subtitle>
+            <InfoContainer>
+                <Title>{title}</Title>
+                <Subtitle>{info}</Subtitle>
+                <SubtitleDate>{date}</SubtitleDate>
+            </InfoContainer>
         </Container>
     );
 }

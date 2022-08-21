@@ -8,18 +8,20 @@ import {
 interface Props {
     imageUrl: string,
     title: string,
-    info: string
+    info: string,
+    date: string
 }
 
-export function MovieCardVertical({ imageUrl, title, info }: Props) {
+export function MovieCardVertical({ imageUrl, title, info, date }: Props) {
     return (
         <Container>
             <ImageContainerRounded>
-                <Image source={{ uri: imageUrl }} />
+                <Image source={{ uri: imageUrl }} resizeMode={'center'} />
             </ImageContainerRounded>
             <InfoContainer>
                 <Title>{title}</Title>
                 <Subtitle>{info}</Subtitle>
+                <Subtitle>{date}</Subtitle>
             </InfoContainer>
         </Container>
     );

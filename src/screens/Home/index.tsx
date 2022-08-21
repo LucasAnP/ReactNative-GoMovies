@@ -17,14 +17,12 @@ export function Home() {
     const movies = useSelector(selectAllMovies);
     const moviesStatus = useSelector(getMoviesStatus);
     const error = useSelector(getMoviesError);
-
     useEffect(() => {
         dispatch(fetchMovies());
     }, [dispatch]);
 
     useEffect(() => {
         if (movies) {
-
         }
     }, [movies])
 
@@ -39,7 +37,7 @@ export function Home() {
                         <ListContainer>
                             <FlatList
                                 data={movies}
-                                renderItem={({ item }) => <MovieCardHorizontal imageUrl={'https://s2.glbimg.com/_5SrYQMNvjUbxeHEkSPpvdv4jpM=/smart/e.glbimg.com/og/ed/f/original/2022/08/18/capitaoamerica01.jpg'} title={'Capitao America'} info={'Muito Bom'} />}
+                                renderItem={({ item }) => <MovieCardHorizontal imageUrl={item.image} title={item.title} info={item.info} date={item.date} />}
                                 showsVerticalScrollIndicator={false}
                                 horizontal
                             // onEndReached={fetchWords}
@@ -53,7 +51,7 @@ export function Home() {
                         <ListContainer>
                             <FlatList
                                 data={movies}
-                                renderItem={({ item }) => <MovieCardVertical imageUrl={'https://s2.glbimg.com/_5SrYQMNvjUbxeHEkSPpvdv4jpM=/smart/e.glbimg.com/og/ed/f/original/2022/08/18/capitaoamerica01.jpg'} title={'Capitao America'} info={'Muito Bom'} />}
+                                renderItem={({ item }) => <MovieCardVertical imageUrl={item.image} title={item.title} info={item.info} date={item.date} />}
                                 showsVerticalScrollIndicator={false}
                             // onEndReached={fetchWords}
                             // ListFooterComponent={renderFooter}

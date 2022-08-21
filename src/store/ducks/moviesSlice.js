@@ -1,5 +1,6 @@
 import { createSlice, nanoid, createAsyncThunk } from "@reduxjs/toolkit";
-import { api } from "../../services/api";
+import { Axios } from "axios";
+import { api, imageApi } from "../../services/api";
 
 const initialState = {
   movies: [],
@@ -10,7 +11,18 @@ const initialState = {
 export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
   try {
     const response = await api.get("/movies/trending");
-    return [...response.data];
+    const estructuredMovies = [];
+    for (const { movie } of response.data) {
+      const { data } = await imageApi.get(`/${movie.ids.tmdb}`);
+      const newMovie = {
+        title: data.title,
+        info: data.tagline,
+        image: `https://image.tmdb.org/t/p/w500/${data.poster_path}`,
+        date: data.release_date.slice(0, 4),
+      };
+      estructuredMovies.push(newMovie);
+    }
+    return [...estructuredMovies];
   } catch (err) {
     return err.message;
   }

@@ -10,4 +10,14 @@ const api = axios.create({
   },
 });
 
-export { api };
+const imageApi = axios.create({
+  baseURL: "https://api.themoviedb.org/3/movie",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  params: {
+    api_key: "c6803e7d106013e02eb85d075e77e0e6",
+  },
+});
+
+export { api, imageApi };
