@@ -1,15 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState } from 'react';
-import { Animated, FlatList, Image, ScrollView, Text } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { AnimatedLoading } from '../../components/AnimatedLoading';
-import { MovieCardHorizontal } from '../../components/MovieCardHorizontal';
-import { MovieCardVertical } from '../../components/MovieCardVertical';
-import { fetchMovies, fetchRecommendedMovies, getMoviesError, getMoviesStatus, selectAllMovies, selectAllRecommendedMovies } from '../../store/ducks/moviesSlice';
+import { StatusBar } from "expo-status-bar";
+import React, { useEffect, useState } from "react";
+import { FlatList, ScrollView } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { AnimatedLoading } from "../../components/AnimatedLoading";
+import { MovieCardHorizontal } from "../../components/MovieCardHorizontal";
+import { MovieCardVertical } from "../../components/MovieCardVertical";
+import { MovieClickedModal } from "../../components/MovieClickedModal";
+import {
+    fetchMovies,
+    fetchRecommendedMovies,
+    getMoviesError,
+    getMoviesStatus,
+    selectAllMovies,
+    selectAllRecommendedMovies,
+} from "../../store/ducks/moviesSlice";
 
 import {
-    Container, ListContainer, RecommendedMoviesContainer, Title, TrendingMoviesContainer
-} from './styles';
+    Container,
+    ListContainer,
+    RecommendedMoviesContainer,
+    Title,
+    TrendingMoviesContainer,
+} from "./styles";
 
 export function Home() {
     const dispatch = useDispatch();
@@ -20,45 +32,63 @@ export function Home() {
     const moviesStatus = useSelector(getMoviesStatus);
     const error = useSelector(getMoviesError);
 
-    useEffect(() => {
-        dispatch(fetchMovies());
-        dispatch(fetchRecommendedMovies())
-    }, [dispatch]);
+    const [modalActive, setModalActive] = useState(false);
+    const [movieClicked, setMovieClicked] = useState({
+        image: '',
+        title: '',
+        date: '',
+        detailedInfo: ''
+    });
 
     useEffect(() => {
-        if (movies) {
-        }
-    }, [movies])
+        dispatch(fetchMovies());
+        dispatch(fetchRecommendedMovies());
+    }, [dispatch]);
+
 
     return (
         <>
             <Container>
                 <StatusBar translucent={true} />
-                {moviesStatus === 'loading' && <AnimatedLoading />}
+                {movieClicked && <MovieClickedModal visible={modalActive} data={movieClicked} setVisible={setModalActive} />}
+                {moviesStatus === "loading" && <AnimatedLoading />}
                 <ScrollView>
                     <TrendingMoviesContainer>
                         <Title>Trending</Title>
                         <ListContainer>
                             <FlatList
                                 data={movies}
-                                renderItem={({ item }) => <MovieCardHorizontal imageUrl={item.image} title={item.title} info={item.info} date={item.date} />}
+                                renderItem={({ item }) => (
+                                    <MovieCardHorizontal
+                                        activeOpacity={0.7}
+                                        imageUrl={item.image}
+                                        title={item.title}
+                                        info={item.info}
+                                        date={item.date}
+                                        onPress={() => { setModalActive(true); setMovieClicked(item) }}
+                                    />
+                                )}
                                 showsVerticalScrollIndicator={false}
                                 horizontal
-                            // onEndReached={fetchWords}
-                            // ListFooterComponent={renderFooter}
                             />
                         </ListContainer>
-
                     </TrendingMoviesContainer>
                     <RecommendedMoviesContainer>
                         <Title>Most Watched</Title>
                         <ListContainer>
                             <FlatList
                                 data={recommendedMovies}
-                                renderItem={({ item }) => <MovieCardVertical imageUrl={item.image} title={item.title} info={item.info} date={item.date} />}
+                                renderItem={({ item }) => (
+                                    <MovieCardVertical
+                                        activeOpacity={0.7}
+                                        imageUrl={item.image}
+                                        title={item.title}
+                                        info={item.info}
+                                        date={item.date}
+                                        onPress={() => { setModalActive(true); setMovieClicked(item) }}
+                                    />
+                                )}
                                 showsVerticalScrollIndicator={false}
-                            // onEndReached={fetchWords}
-                            // ListFooterComponent={renderFooter}
                             />
                         </ListContainer>
                     </RecommendedMoviesContainer>

@@ -1,27 +1,39 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React from "react";
+import { TouchableOpacityProps } from "react-native";
 
 import {
-    Container, Image, ImageContainerRounded, InfoContainer, Subtitle, Title
-} from './styles';
+    Container,
+    DateContainer,
+    Image,
+    ImageContainerRounded,
+    InfoContainer,
+    Subtitle,
+    Title,
+    TitleAndSubContainer,
+    SubtitleDate,
+} from "./styles";
 
-interface Props {
-    imageUrl: string,
-    title: string,
-    info: string,
-    date: string
+interface Props extends TouchableOpacityProps {
+    imageUrl: string;
+    title: string;
+    info: string;
+    date: string;
 }
 
-export function MovieCardVertical({ imageUrl, title, info, date }: Props) {
+export function MovieCardVertical({ imageUrl, title, info, date, ...rest }: Props) {
     return (
-        <Container>
+        <Container {...rest} >
             <ImageContainerRounded>
-                <Image source={{ uri: imageUrl }} resizeMode={'center'} />
+                <Image source={{ uri: imageUrl }} resizeMode={"center"} />
             </ImageContainerRounded>
             <InfoContainer>
-                <Title>{title}</Title>
-                <Subtitle>{info}</Subtitle>
-                <Subtitle>{date}</Subtitle>
+                <TitleAndSubContainer>
+                    <Title>{title}</Title>
+                    <Subtitle>{info}</Subtitle>
+                </TitleAndSubContainer>
+                <DateContainer>
+                    <SubtitleDate>{date}</SubtitleDate>
+                </DateContainer>
             </InfoContainer>
         </Container>
     );

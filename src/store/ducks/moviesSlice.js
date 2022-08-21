@@ -20,6 +20,7 @@ export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
         info: data.tagline,
         image: `https://image.tmdb.org/t/p/w500/${data.poster_path}`,
         date: data.release_date.slice(0, 4),
+        detailedInfo: data.overview,
       };
       estructuredMovies.push(newMovie);
     }
@@ -42,6 +43,7 @@ export const fetchRecommendedMovies = createAsyncThunk(
           info: data.tagline,
           image: `https://image.tmdb.org/t/p/w500/${data.poster_path}`,
           date: data.release_date.slice(0, 4),
+          detailedInfo: data.overview,
         };
         estructuredMovies.push(newMovie);
       }
