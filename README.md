@@ -13,7 +13,7 @@ foi visto que está deprecisado, então, foi utilizado o React toolkit e o creat
 
 # Testar aplicativo
 ```
-Podera baixar o apk gerado pelo Expo, pelo link: https://expo.dev/artifacts/eas/bidFea1kz6PCeVrmXw9Mwk.aab
+Podera baixar o apk gerado pelo Expo, pelo link: https://expo.dev/artifacts/eas/4ZPpqFwVLrrc28MDMibmFW.apk
 (Lembrar de abrir o download com o navegador, pois se for pelo expo pedirá credenciais)
 ```
 ## Requisitos para rodar localmente
