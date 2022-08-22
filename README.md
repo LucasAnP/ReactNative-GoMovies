@@ -58,5 +58,5 @@ $ expo start
         - Expo Icons (MaterialIcons)
   <!--te-->
   
-  > This is a challenge by Coodesh
+  > This is a challenge by WEBJUMP
   
