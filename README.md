@@ -8,7 +8,7 @@
 
 # Testar aplicativo
 ```
-Podera baixar o apk gerado pelo Expo, pelo link: 
+Podera baixar o apk gerado pelo Expo, pelo link: https://expo.dev/artifacts/eas/bidFea1kz6PCeVrmXw9Mwk.aab
 (Lembrar de abrir o download com o navegador, pois se for pelo expo pedirá credenciais)
 ```
 ## Requisitos para rodar localmente
