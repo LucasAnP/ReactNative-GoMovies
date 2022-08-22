@@ -45,7 +45,7 @@ $ expo start
     - Redux Toolkit
     - Axios
     - Lottie
-    - Jest
+    - @testing-library/react-native(Jest)
     - Styled Component
     - Fonts
         - Poppins Bold, Poppins Regular, Poppins Medium
