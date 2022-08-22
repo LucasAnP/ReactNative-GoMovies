@@ -1,5 +1,5 @@
 ## GoMovies
-<p align="left">Desafio</p>
+<p align="left">Desafio WEBJUMP </p>
 
 <h2 align="left"><a href="https://reactnative.dev/">🔗 React Native</a></h2>
 <p align="center">🚀 Lib para construir interfaces do usuário com componentes reutilizáveis</p>
@@ -57,4 +57,6 @@ $ expo start
     - Icons
         - Expo Icons (MaterialIcons)
   <!--te-->
+  
+  > This is a challenge by Coodesh
   
