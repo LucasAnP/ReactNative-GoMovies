@@ -6,6 +6,11 @@
 
 > Nesse desafio deverá ser desenvolvolvido um aplicativo para listar filmes.
 
+# Observações
+
+>Neste app foi solicitado a ultilização do redux com redux promisse middleware. Mas, ao utilizar o createStore, 
+foi visto que está deprecisado, então, foi utilizado o React toolkit e o createAsyncThunk do mesmo para chamadas assincronas.
+
 # Testar aplicativo
 ```
 Podera baixar o apk gerado pelo Expo, pelo link: https://expo.dev/artifacts/eas/bidFea1kz6PCeVrmXw9Mwk.aab
