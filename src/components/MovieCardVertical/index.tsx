@@ -24,7 +24,7 @@ export function MovieCardVertical({ imageUrl, title, info, date, ...rest }: Prop
     return (
         <Container {...rest} >
             <ImageContainerRounded>
-                <Image source={{ uri: imageUrl }} resizeMode={"center"} />
+                <Image source={{ uri: imageUrl }} resizeMode={"stretch"} />
             </ImageContainerRounded>
             <InfoContainer>
                 <TitleAndSubContainer>
