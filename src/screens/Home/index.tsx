@@ -1,6 +1,5 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
-import { FlatList, ScrollView } from "react-native";
+import { FlatList, ScrollView, StatusBar } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { AnimatedLoading } from "../../components/AnimatedLoading";
 import { MovieCardHorizontal } from "../../components/MovieCardHorizontal";

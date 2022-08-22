@@ -4,9 +4,6 @@ import Modal from "react-native-modal";
 import { AbsoluteContainer, ImageBackground, ImageContainer, ModalContainer, Subtitle, SubtitleDate, Title, TitleAndSubContainer } from "./styles";
 
 import { MaterialIcons } from '@expo/vector-icons';
-import { useTheme } from "styled-components";
-import { Image } from "react-native";
-
 interface Data {
     image: string;
     title: string;
@@ -21,14 +18,12 @@ interface Props {
 }
 
 export function MovieClickedModal({ visible, data, setVisible }: Props) {
-
-    const theme = useTheme();
     return (
         <Modal isVisible={visible} coverScreen={true} backdropOpacity={0.8}>
             <ModalContainer>
                 <ImageContainer>
                     <AbsoluteContainer onPress={() => { setVisible(false) }}>
-                        <MaterialIcons name="chevron-left" size={32} color={theme.colors.text_white} />
+                        <MaterialIcons name="chevron-left" size={32} color={'#ffffff'} />
                     </AbsoluteContainer>
                     <ImageBackground source={{ uri: data.image }} resizeMode={'stretch'} />
                 </ImageContainer>
